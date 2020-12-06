@@ -6,8 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 
 //IMPORTS COMPONENTS
-import App from './App'
-
+import LoginPage from 'views/LoginPage/LoginPage'
 
 //REDUX
 import { logger } from 'redux-logger'
@@ -17,7 +16,8 @@ import reducers from './redux/reducers'
 import sagas from './redux/sagas'
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
-
+import 'assets/scss/bootstrap/scss/bootstrap.scss'
+import 'assets/styles/global.css'
 
 
 
@@ -31,11 +31,6 @@ const middlewares = [sagaMiddleware, routeMiddleware]
 // if (process.env.NODE_ENV === 'development') {
 middlewares.push(logger)
 
-const options = {
-  autoConfig: true, // set pixel's autoConfig
-  debug: false, // enable logs
-};
-
 
 
 
@@ -44,11 +39,13 @@ sagaMiddleware.run(sagas)
 
 moment.locale('pt-br')
 
+
+
 ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact render={props => <App {...props} />} history={history} />
+          <Route path="/login" exact render={props => <LoginPage {...props} />} history={history} />
          <Redirect to="/" />
         </Switch>
       </BrowserRouter>
