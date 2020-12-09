@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 
 //IMPORTS COMPONENTS
 import LoginPage from 'views/LoginPage/LoginPage'
+import Robert from 'views/Robert/Robert'
 
 //REDUX
 import { logger } from 'redux-logger'
@@ -46,6 +47,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/login" exact render={props => <LoginPage {...props} />} history={history} />
+          <Route path="/" exact render={props => <Robert {...props} />} history={history} />
+
          <Redirect to="/" />
         </Switch>
       </BrowserRouter>
